@@ -1,0 +1,294 @@
+a. Define tokenization in NLP. Give an example.
+Answer:
+Tokenization in NLP is the process of breaking down a text into smaller units called tokens, which could be words, phrases or symbols.
+It helps in simplifying text for further analysis and modeling.
+
+Example:
+Sentence: "Natural Language Processing is interesting."
+After tokenization → ["Natural", "Language", "Processing", "is", "interesting"]
+
+
+b. What is a Bag of Words model? How does count vectorization differ from one-hot encoding?
+Answer:
+The Bag of Words (BoW) model is a text representation technique where a document is represented by the frequency of words it contains, without considering grammar or word order.
+
+Difference:
+Count Vectorization: Creates a vector with counts of words in a document. For example, if the word "NLP" appears 3 times, its value will be 3.
+One-Hot Encoding: Represents each word as a binary vector (0 or 1) for presence or absence. For example, if "NLP" is present, its value is 1, otherwise 0.
+
+
+
+
+
+c. Explain the purpose of TF-IDF. When is it preferred over simple frequency-based representations?
+TF-IDF (Term Frequency–Inverse Document Frequency) is a weighting scheme that highlights words that are important in a document but not common across all documents.
+TF (Term Frequency): How often a word appears in a document.
+IDF (Inverse Document Frequency): Penalizes words that appear frequently across many documents (like “the”, “is”).
+
+When preferred?
+TF-IDF is preferred over raw counts when we want to reduce the impact of common words and emphasize unique, informative words for tasks like document classification and search engines.
+
+
+
+
+d. What are stop words, and why are they removed in text pre-processing? 
+Answer:
+Stop words are common words like “is”, “the”, “and”, “in” that carry little or no semantic meaning. They are removed to reduce noise and computational complexity, allowing models to focus on more meaningful words.
+
+
+
+e. List any four challenges commonly encountered during text pre-processing.
+Answer:
+Handling noisy data: Presence of spelling errors, slang, or abbreviations.
+Dealing with emojis and symbols: Hard to interpret their meaning in sentiment or semantic analysis.
+Normalization issues: Different forms of the same word (e.g., run, running, ran).
+Handling multilingual text: Requires language-specific tokenizers and stop word lists.
+
+
+
+f. Explain the process and benefits of using Word2Vec embeddings over traditional vectorization techniques.
+Answer:
+Word2Vec is a neural network-based method that converts words into dense vectors (embeddings) capturing semantic meaning and context.
+It uses two main architectures: CBOW (Continuous Bag of Words) and Skip-Gram.
+Benefits over BoW or TF-IDF:
+Captures semantic similarity (e.g., “king” and “queen” are closer in vector space).
+Produces dense, low-dimensional vectors, unlike sparse high-dimensional BoW.
+Considers context, making it suitable for tasks like sentiment analysis, machine translation, and recommendation systems.
+
+
+
+g. How does semantic analysis differ from sentiment analysis? Illustrate with a use case.
+Answer:
+Semantic Analysis: Focuses on understanding the meaning and relationships in text. Example: Extracting subject–predicate–object triples from sentences.
+Sentiment Analysis: Focuses on determining the emotional tone (positive, negative, neutral).
+
+Use Case:
+Semantic Analysis: In a legal document, identifying “Person A purchased Product B”.
+Sentiment Analysis: Analyzing product reviews to determine if customers are happy or dissatisfied.
+
+
+h. Explain the concept of n-gram frequency analysis using unigrams and bigrams. Provide an example from a sample sentence.
+Answer:
+N-gram analysis involves grouping sequences of n words from text.
+Unigrams: Single words
+Bigrams: Two consecutive words
+
+Example:
+Sentence: "I love natural language processing"
+Unigrams: [I, love, natural, language, processing]
+Bigrams: [I love, love natural, natural language, language processing]
+
+This analysis is useful for capturing word order and local context in NLP tasks like text prediction.
+
+
+a. Differentiate between rule-based and data-driven text classification approaches.
+Differentiate between rule-based and data-driven text classification approaches.
+
+
+
+b. What are semantic rules in the context of rule-based classifiers? Give an example.
+Answer:
+Semantic rules define patterns based on the meaning or context of words, rather than exact matches. These rules help in identifying intent or category in text.
+
+Example:
+Rule: If the sentence contains words like buy, order, purchase, classify as Shopping Intent.
+Sentence: “I want to buy a new phone.” → Classified as Shopping.
+
+
+
+
+c. What is the purpose of AFINN lexicon in sentiment analysis?
+Answer:
+The AFINN lexicon is a list of words associated with integer scores ranging from -5 (negative) to +5 (positive).
+It is used to determine the sentiment of text by summing up scores of individual words.
+This makes it useful for rule-based or hybrid sentiment analysis approaches.
+
+
+
+
+d. Explain the concept of polarity strength at the sentence level with an example.
+Answer:
+Polarity strength measures the intensity of sentiment in a sentence, typically on a scale from -1 to +1 or using categorical labels like Strong Positive, Weak Positive, etc.
+
+Example:
+Sentence 1: “The movie was good.” → Polarity: +0.4 (Weak Positive)
+Sentence 2: “The movie was absolutely fantastic!” → Polarity: +0.9 (Strong Positive)
+
+
+
+e. What is a spam classifier? Mention any two features useful in building one.
+Answer:
+A spam classifier is a model that classifies emails or messages as spam or not spam.
+
+Two useful features:
+Presence of suspicious keywords: e.g., “win money”, “free offer”.
+Number of links or special characters: High frequency often indicates spam.
+
+
+f. How does Naïve Bayes handle the text classification problem using probabilities?
+Answer:
+Naïve Bayes uses Bayes’ theorem with the assumption of feature independence. It calculates the probability of a class given a document as:
+It predicts the class with the highest posterior probability based on the presence of words in the document.
+
+
+g. What role does corpus creation play in building a sentiment analysis model?
+Answer:
+Corpus creation involves gathering and cleaning large text data for training and testing. A well-prepared corpus ensures:
+Balanced representation of positive, negative, and neutral samples.
+Coverage of domain-specific vocabulary.
+Higher accuracy and generalization in sentiment analysis models.
+
+
+
+h. Describe how you would apply a rule-based lexicon approach using NRC or custom lexicons.
+Answer:
+Load the lexicon: Use NRC Emotion Lexicon or custom dictionary mapping words to emotions or sentiments.
+Tokenize the text: Break sentences into words.
+Match tokens to lexicon: Assign polarity or emotion scores for each token.
+Aggregate scores: Compute sentence or document-level sentiment.
+Decision rule: Classify as Positive, Negative, or specific emotions based on scores.
+
+
+
+i. How would you enhance your model to handle sarcasm or negations?
+Answer:
+Negation Handling: Modify polarity when negation words (e.g., “not”, “never”) appear near positive or negative terms.
+Sarcasm Detection: Use additional features like emoticons, exclamation marks, or train a sarcasm detection model using contextual embeddings (e.g., BERT).
+
+Example:
+“Great! Another delay in delivery.” → Sarcasm → Negative sentiment.
+
+
+j. Suppose the client wants polarity at paragraph-level granularity. What design decisions will you make?
+Answer:
+Sentence-Level Analysis: Compute polarity for each sentence first.
+Aggregation Strategy: Use mean, weighted sum, or majority voting to combine sentence scores into paragraph polarity.
+Context Preservation: Ensure that transitions between sentences are considered (e.g., using paragraph embeddings like Doc2Vec or transformers).
+Scalability: Design the model to process multi-sentence context efficiently.
+
+
+a. What is the difference between document clustering and topic modeling?
+Answer:
+Document Clustering: Groups documents into clusters based on similarity without predefined topics.
+Each document belongs to one cluster.
+Example: News articles grouped into “Sports,” “Politics,” and “Technology.”
+
+Topic Modeling: Identifies latent topics within documents, allowing each document to have multiple topics with associated probabilities.
+Example: A news article may contain both “Sports” and “Finance” topics.
+
+
+
+b. Define Latent Semantic Analysis (LSA) and explain its role in topic modeling.
+Answer:
+Latent Semantic Analysis (LSA) is a technique that reduces the dimensionality of term-document matrices using Singular Value Decomposition (SVD).
+It captures underlying semantic structures by mapping words and documents to a lower-dimensional latent space.
+
+Role in topic modeling:
+Identifies hidden relationships between terms and documents.
+Groups words and documents based on co-occurrence patterns, revealing latent topics.
+
+
+c. What are the key differences between extractive and abstractive summarization?
+
+d. What is the role of the Transformers Pipeline in modern NLP summarization tasks? List common models used.
+Answer:
+The Transformers Pipeline from Hugging Face provides an easy-to-use API for performing summarization using pre-trained models.
+It abstracts tokenization, model inference, and decoding steps.
+
+Common models for summarization:
+BART (facebook/bart-large-cnn)
+T5 (google/t5-base)
+PEGASUS (google/pegasus-large)
+
+
+e. Explain how semantic topic detection can be achieved using LSA with a working example (no code required).
+Use any article from the CNN/DailyMail or Wikipedia dataset.
+Example Workflow:
+
+Choose Article: CNN article on “Climate Change and Global Warming.”
+Preprocessing: Tokenize, remove stopwords, create Term-Document Matrix (TDM).
+Apply LSA: Perform SVD on TDM → extract top k components.
+
+Interpret Topics:
+Topic 1: “climate, change, warming, temperature”
+Topic 2: “policy, government, emission, regulation”
+
+Assign Topics: Each paragraph/article gets a topic distribution, revealing semantic structure.
+
+
+
+
+f. Implement extractive summarization using TextRank from gensim or sumy.
+g. Implement abstractive summarization using Hugging Face transformers (e.g., facebook/bart-large-cnn).
+h. Dataset: CNN/DailyMail summarization dataset via Hugging Face: cnn_dailymail
+https://huggingface.co/datasets/cnn_dailymail
+
+
+a. What are Large Language Models (LLMs)? How are they different from traditional NLP models?
+Answer:
+Large Language Models (LLMs) are deep learning models trained on massive datasets to understand and generate human language.
+They are based on transformer architectures, which enable context-aware text generation and reasoning.
+
+Difference from traditional NLP models:
+Scale: LLMs have billions of parameters, while traditional models (like n-grams or logistic regression) are much smaller.
+Learning: LLMs learn from raw text using self-supervised learning, whereas older models rely on hand-crafted features.
+Generalization: LLMs handle multiple NLP tasks without task-specific training, unlike traditional models that need separate models for each task.
+
+
+
+
+b. Mention two use cases each of ChatGPT and LLAMA3 in enterprise settings.
+ChatGPT:
+Customer Support Automation: Responding to user queries in real-time with accurate, conversational responses.
+Content Generation: Writing marketing copies, blogs, and product descriptions.
+
+LLAMA3:
+On-Premise Document Analysis: Used by organizations that require strict data privacy.
+Domain-Specific Chatbots: Customized for sectors like healthcare or finance using fine-tuning.
+
+
+
+c. Define prompt engineering and explain why it is important for LLMs.
+Answer:
+Prompt Engineering is the practice of designing and optimizing input prompts to guide LLMs to produce desired outputs.
+
+Importance:
+LLM responses are prompt-dependent, so well-structured prompts improve accuracy.
+Reduces hallucinations and improves factual correctness.
+Enables zero-shot and few-shot learning without additional training.
+
+Example:
+Bad prompt → “Explain AI.”
+Better prompt → “Explain Artificial Intelligence in simple terms with two examples.”
+
+
+
+d. Explain the architecture and training objectives behind GPT-style decoder-only LLMs
+Answer:
+GPT models use a decoder-only transformer architecture that processes text from left to right (autoregressive).
+
+Key Components:
+Self-Attention Layers: Capture context from previous tokens.
+Feed-Forward Networks: Transform token representations.
+Layer Normalization & Residual Connections: Stabilize training.
+
+Training Objective:
+Predict the next token in a sequence (causal language modeling).
+Minimize cross-entropy loss between predicted and actual tokens.
+
+
+
+e. Compare and contrast ChatGPT (GPT-4) with Mistral or Mixtral in terms of architecture, licensing, and usability
+f. Describe the key components of a RAG system and how it improves over zero-shot generation.
+Answer:
+RAG (Retrieval-Augmented Generation) combines retrieval and generation to enhance accuracy and factuality.
+
+Key Components:
+Retriever: Fetches relevant documents from a knowledge base.
+Generator: LLM that conditions its response on retrieved documents.
+Knowledge Store: A database of domain-specific or external knowledge.
+
+Improvement over Zero-Shot:
+Provides grounded answers using external facts.
+Reduces hallucination and increases trustworthiness.
+Suitable for enterprise apps needing real-time knowledge updates.
