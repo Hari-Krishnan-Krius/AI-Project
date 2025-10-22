@@ -61,7 +61,7 @@ pip install numpy pandas matplotlib jupyter
 
    ```bash
    git clone https://github.com/Hari-Krishnan-Krius/AI-Project.git
-   cd "AI-Project/Project1/Code"
+   cd "AI-Project/Project1 - Programming Essentials for AI/Code"
    ```
 
 2. **Open the notebook**
